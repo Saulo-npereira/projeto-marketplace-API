@@ -1,8 +1,8 @@
-"""adicionando atributo de unique da coluna nome da tabela produtos
+"""first
 
-Revision ID: cc3bcbcb335a
+Revision ID: b6bb2eaa6d0f
 Revises: 
-Create Date: 2026-05-03 10:44:50.740173
+Create Date: 2026-05-05 22:56:19.744101
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'cc3bcbcb335a'
+revision: str = 'b6bb2eaa6d0f'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -54,6 +54,7 @@ def upgrade() -> None:
     sa.Column('pedido_id', sa.Integer(), nullable=False),
     sa.Column('produto_id', sa.Integer(), nullable=False),
     sa.Column('quantidade', sa.Integer(), nullable=False),
+    sa.Column('total', sa.Float(), nullable=False),
     sa.ForeignKeyConstraint(['pedido_id'], ['pedidos.id'], ),
     sa.ForeignKeyConstraint(['produto_id'], ['produtos.id'], ),
     sa.PrimaryKeyConstraint('id')

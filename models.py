@@ -59,15 +59,19 @@ class Pedido(Base):
 class ItensPedido(Base):
     __tablename__ = 'itens_pedido'
 
+    
+
     id = Column('id', Integer, primary_key=True, autoincrement=True)
     pedido_id = Column('pedido_id', ForeignKey('pedidos.id'), nullable=False)
     produto_id = Column('produto_id', ForeignKey('produtos.id'), nullable=False)
     quantidade = Column('quantidade', Integer, nullable=False)
+    total = Column('total', Float, nullable=False)
 
-    def __init__(self, pedido_id, produto_id, quantidade):
+    def __init__(self, pedido_id, produto_id, quantidade, total):
         self.pedido_id = pedido_id
         self.produto_id = produto_id
         self.quantidade = quantidade
+        self.total = total
 
-    pedido = relationship('Pedido')
     produto = relationship('Produto')
+    pedido = relationship('Pedido')

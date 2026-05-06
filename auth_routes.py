@@ -57,7 +57,7 @@ async def login(login: OAuth2PasswordRequestForm = Depends(), session: Session =
     }
 
 @auth_router.get('/usuario')
-async def perfil_usuario(usuario: Usuario = Depends(verificar_admin)):
+async def perfil_usuario(usuario: Usuario = Depends(verificar_usuario)):
     return {
         'usuario': usuario
     }
